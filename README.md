@@ -2,13 +2,19 @@
 
 React Responsive Chat provides a great and customizable Chat UI for your React Web App
 
-## Installation
-
-Install react-responsive-chat with npm
+### Install
 
 ```bash
   npm install react-responsive-chat
 ```
+
+or
+
+```bash
+  yarn add react-responsive-chat
+```
+
+### Usage
 
     import React,{useState, useEffect} from 'react';
     import ReactResponsiveChat from 'react-responsive-chat';
@@ -93,7 +99,11 @@ Install react-responsive-chat with npm
             />
           )}
 
-## Props
+### Codesandbox Demo
+
+[Demo](https://codesandbox.io/s/react-responsive-chat-mzin15)
+
+### Props
 
 | Name                    | Type     | Description                                | Default                 |
 | ----------------------- | -------- | ------------------------------------------ | ----------------------- |
@@ -278,11 +288,3 @@ welcomeToChat: {
 };
 
 ```
-
-## Contributing
-
-Contributions are always welcome!
-
-See `contributing.md` for ways to get started.
-
-Please adhere to this project's `code of conduct`.
