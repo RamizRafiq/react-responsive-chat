@@ -1,0 +1,54 @@
+{
+  "name": "react-responsive-chat",
+  "version": "1.0.0",
+  "description": "React Responsive Chat provides a great and customizable Chat UI for your React Web App",
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "scripts": {
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "react chat",
+    "react responsive chat",
+    "chat",
+    "customizable chat"
+  ],
+  "author": "RamizRafiq",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "react": ">=17"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "typescript": "^5.0.3"
+  },
+  "dependencies": {
+    "@types/node": "^18.15.11",
+    "@types/react-icons": "^3.0.0",
+    "html-react-parser": "^3.0.15",
+    "moment": "^2.29.4",
+    "react-icons": "^4.8.0",
+    "react-intersection-observer": "^9.4.3",
+    "react-svg": "^16.1.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RamizRafiq/react-responsive-chat.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RamizRafiq/react-responsive-chat/issues"
+  },
+  "homepage": "https://github.com/RamizRafiq/react-responsive-chat#readme"
+}

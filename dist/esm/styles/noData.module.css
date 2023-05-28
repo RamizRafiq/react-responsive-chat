@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+  align-items: center;
+  justify-content: center;
+}
+
+.container svg {
+  height: 80px;
+  width: auto;
+}
+.container svg * {
+  fill: var(--welcometochat-icon-color);
+}
+
+.container h4 {
+  font-size: 25px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  color: var(--welcometochat-text-color);
+}
+.container h4[font-size="small"] {
+  font-size: 20px;
+}

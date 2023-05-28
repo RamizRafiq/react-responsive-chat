@@ -1,0 +1,124 @@
+.chat {
+  display: flex;
+  min-height: inherit;
+  height: inherit;
+}
+.chat > div:first-child {
+  width: 35%;
+  height: 100%;
+}
+.chat > div:last-child {
+  width: 65%;
+  height: 100%;
+}
+:root {
+  /* Room */
+  --room-time-text: 12px;
+  --room-unseen-text: 11px;
+  --room-msg-text: 17px;
+  --room-title-text: 14px;
+  /* Chats */
+  --chat-msg-text-size: 16px;
+  --chat-msg-time-size: 12px;
+  --chat-separator-time-size: 15px;
+  --chat-room-padding: 10px 10px;
+  --new-msgs-text-size: 15px;
+  --msg-avatar-size: 50px;
+  --chats-scroll-size: 7px;
+
+  --chats-content-padding: 20px;
+  --chat-box-padding: 10px 15px;
+}
+
+@media screen and (max-width: 1440px) and (min-width: 1220px) {
+  .chat > div:first-child {
+    width: 30%;
+  }
+  .chat > div:last-child {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 1920px) and (min-width: 1440px) {
+  .chat > div:first-child {
+    width: 25%;
+  }
+  .chat > div:last-child {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 2560px) and (min-width: 1920px) {
+  .chat > div:first-child {
+    width: 20%;
+  }
+  .chat > div:last-child {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    /* Room */
+    --room-time-text: 11px;
+    --room-unseen-text: 10px;
+    --room-msg-text: 16px;
+    --room-title-text: 13px;
+
+    /* Chats */
+    --chat-msg-text-size: 15px;
+    --chat-msg-time-size: 10px;
+    --chat-separator-time-size: 14px;
+    --new-msgs-text-size: 14px;
+    --msg-avatar-size: 45px;
+    --chats-scroll-size: 5px;
+
+    --chats-content-padding: 15px;
+    --chat-box-padding: 8px 13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hide {
+    display: none;
+  }
+  .show {
+    display: block;
+  }
+  .chat > div:first-child {
+    width: 100%;
+    border: none;
+  }
+  .chat > div:last-child {
+    width: 100%;
+  }
+
+  :root {
+    /* Room */
+    --room-time-text: 11px;
+    --room-unseen-text: 10px;
+    --room-msg-text: 15px;
+    --room-title-text: 12px;
+
+    /* Chats */
+    --chat-msg-text-size: 16px;
+    --chat-msg-time-size: 13px;
+    --chat-separator-time-size: 14px;
+    --new-msgs-text-size: 14px;
+    --msg-avatar-size: 45px;
+    --chats-scroll-size: 5px;
+    --chats-content-padding: 10px;
+    --chat-box-padding: 8px 10px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  :root {
+    --chat-msg-text-size: 15px;
+    --chat-msg-time-size: 12px;
+    --chat-separator-time-size: 13px;
+    --new-msgs-text-size: 13px;
+    --msg-avatar-size: 40px;
+    --chats-scroll-size: 4px;
+    --chats-content-padding: 8px;
+    --chat-box-padding: 6px 8px;
+  }
+}

@@ -1,0 +1,181 @@
+.chatRooms {
+  height: inherit;
+  min-height: inherit;
+  max-height: inherit;
+  border-radius: inherit;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.bg {
+  background-color: var(--chatroom-bg-color);
+  border-bottom: 1px solid var(--chatroom-separator-color);
+  transition: ease-in-out 0.5s;
+}
+.selected {
+  background-color: var(--chatroomselected-bg-color);
+  border-bottom: 1px solid var(--chatroomselected-separator-color);
+  transition: border linear 0.5s;
+}
+.selectedBorder {
+  border-bottom: 1px solid var(--chatroomselected-separator-color);
+  transition: border linear 0.5s;
+}
+
+.room {
+  display: flex;
+  padding: var(--chat-room-padding);
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.room .left {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.room .left .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.room .left .avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.room .left .msgDetails {
+  margin-left: 10px;
+  overflow: hidden;
+}
+
+.room .left .msgDetails h5 {
+  font-size: var(--room-msg-text);
+  margin-bottom: 5px;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  color: var(--chatroom-name-color);
+}
+
+.room .left .msgDetails p {
+  font-size: var(--room-title-text);
+  margin-bottom: 0px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-all;
+  color: var(--chatroom-message-color);
+}
+
+.room .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 7px 0px;
+  flex-shrink: 0;
+  margin-left: 20px;
+  min-width: 49px;
+}
+.room .right[data-center="true"] {
+  justify-content: center;
+}
+
+.room .right .time {
+  font-size: var(--room-time-text);
+  color: var(--chatroom-time-color);
+  margin-bottom: 2px;
+}
+
+.room .right .unseen {
+  font-size: var(--room-unseen-text);
+  background-color: var(--chatroom-unreadcountbg-color);
+  color: var(--chatroom-unreadcount-color);
+  min-width: 22px;
+  min-height: 22px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chatsHeaderContainer {
+  position: sticky;
+  top: 0;
+}
+.chatsHeader {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding-inline: 20px;
+  background-color: var(--chatroomsheader-bg-color);
+}
+.chatsHeader h4 {
+  color: var(--chatroomsheader-text-color);
+  margin-bottom: 0px;
+}
+
+.selected .left .msgDetails p {
+  color: var(--chatroomselected-message-color);
+}
+.selected .left .msgDetails h5 {
+  color: var(--chatroomselected-name-color);
+}
+
+.selected .right .unseen {
+  background-color: var(--chatroomselected-unreadcountbg-color);
+  color: var(--chatroomselected-unreadcount-color);
+}
+.selected .right .time {
+  color: var(--chatroomselected-time-color);
+}
+
+.bg:hover {
+  background-color: var(--chatroom-hoverbg-color);
+}
+.loader {
+  height: calc(100% - 60px);
+}
+
+.chatRooms::-webkit-scrollbar {
+  width: var(--chats-scroll-size);
+  border-inline: 1.5px solid var(--chatroomsscroller-bar-color);
+}
+
+.chatRooms::-webkit-scrollbar-thumb {
+  background-color: var(--chatroomsscroller-bar-color);
+  border-radius: 5px;
+  visibility: hidden;
+  transition: visibility 0.5s linear;
+}
+
+.chatRooms::-webkit-scrollbar-track {
+  background-color: var(--chatroomsscroller-track-color);
+}
+.chatRooms:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+.noData h4 {
+  color: var(--nochatroomsfound-text-color);
+}
+.noData svg * {
+  fill: var(--nochatroomsfound-icon-color);
+}
+
+@media screen and (max-width: 425px) {
+  .room .left .avatar {
+    width: 45px;
+    height: 45px;
+  }
+}
