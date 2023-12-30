@@ -1,6 +1,6 @@
 {
   "name": "react-responsive-chat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Responsive Chat provides a great and customizable Chat UI for your React Web App",
   "main": "./dist/esm/index.js",
   "module": "./dist/esm/index.js",
