@@ -1,7 +1,8 @@
 .chat {
   display: flex;
   min-height: inherit;
-  height: inherit;
+  height: 80vh;
+  border: 1px solid var(--chatroomsheader-bg-color);
 }
 .chat > div:first-child {
   width: 35%;

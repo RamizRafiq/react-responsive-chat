@@ -172,7 +172,6 @@ export interface InterfaceChat {
   onChatRoomSelection: (e: RoomInterface) => void;
   renderChatTimeSeparator: React.FC<TimeInterface>;
   chatsLimit: IChatsLimits;
-  rooms: RoomInterface[];
   onTyping: ({ typing, roomId }: { typing: boolean; roomId: string }) => void;
   chatsPage: number;
 }

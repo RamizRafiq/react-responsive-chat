@@ -20,6 +20,6 @@
   margin-bottom: 0px;
   color: var(--welcometochat-text-color);
 }
-.container h4[font-size="small"] {
+.container h4[data-fontsize="small"] {
   font-size: 20px;
 }

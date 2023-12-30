@@ -286,5 +286,11 @@ welcomeToChat: {
   text: "#ae93ff",
 },
 };
-
 ```
+
+## Upcoming Features
+
+1. Media Support
+2. Search Chats or Users Support
+3. Block User Chat Rooms
+4. Delete Chat Rooms or Single Message

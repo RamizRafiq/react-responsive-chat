@@ -7,33 +7,33 @@ import React, {
 import moment from "moment";
 import Parser from "html-react-parser";
 import { RiSendPlaneFill } from "react-icons/ri";
-import { FiArrowLeft } from "react-icons/fi";
+// import { FiArrowLeft } from "react-icons/fi";
 import { InView } from "react-intersection-observer";
-import { ReactSVG } from "react-svg";
+// import { ReactSVG } from "react-svg";
 import classes from "../styles/chat.module.css";
-import chatsHeaderClasses from "../styles/chatsHeader.module.css";
+// import chatsHeaderClasses from "../styles/chatsHeader.module.css";
 import chatsRoomsClasses from "../styles/chatRooms.module.css";
 import containerClasses from "../styles/chatsContainer.module.css";
 import loaderCss from "../styles/loader.module.css";
-import noDataCss from "../styles/noData.module.css";
+// import noDataCss from "../styles/noData.module.css";
 
 import EmptyImg from "../images/blank-user.jpg";
-import welcomeToChat from "../images/welcome-to-chat.svg";
+import WelcomeToChat from "./WelcomeToChat";
 import NoChatRooms from "../images/no-rooms.svg";
+import Room from "./Room";
+import ChatsHeader from "./ChatsHeader";
 
 import {
   InterfaceChat,
   InterfaceChatRoomsComp,
   InterfaceChatsContainer,
   MessageInterface,
-  RoomCompInterface,
   RoomInterface,
-  TimeInterface,
   UserInterface,
   IScrollIntoView,
   ThemeColorsInteface,
 } from "./interfaces";
-const ReactSvg = ReactSVG;
+import RenderTime from "./RenderTime";
 
 let isChatInitialLoad = false;
 let isRoomsInitialLoad = false;
@@ -108,72 +108,6 @@ const customColors = {
   },
 };
 
-function Room({
-  data,
-  selectedChatRoom,
-  onChatRoomSelection,
-  className = "",
-  id,
-  user,
-  dataKey,
-}: RoomCompInterface): JSX.Element {
-  const roomData: UserInterface =
-    user._id == data?.sender?._id ? data?.receiver : data?.sender;
-
-  return (
-    <div
-      className={[
-        chatsRoomsClasses.room,
-        selectedChatRoom?._id == data?._id
-          ? chatsRoomsClasses.selected
-          : chatsRoomsClasses.bg,
-        className,
-      ].join(" ")}
-      onClick={() => {
-        if (typeof onChatRoomSelection == "function") {
-          onChatRoomSelection(data);
-        } else {
-          throw new Error("onChatRoomSelection is required for selection");
-        }
-      }}
-      id={id}
-      key={dataKey}
-    >
-      <div className={chatsRoomsClasses.left}>
-        <div className={chatsRoomsClasses.avatar}>
-          <img
-            src={roomData?.photo}
-            onError={(e: SyntheticEvent<HTMLImageElement, Event>) => {
-              e.currentTarget.onerror = null;
-              e.currentTarget.src = EmptyImg;
-            }}
-          />
-        </div>
-        <div className={chatsRoomsClasses.msgDetails}>
-          <h5>{`${roomData?.fullName}`}</h5>
-          <p>
-            {data?.lastMessage?.text
-              ? data?.lastMessage?.text
-              : "Start your conversion"}
-          </p>
-        </div>
-      </div>
-      <div
-        className={chatsRoomsClasses.right}
-        data-center={data?.lastMessage == null}
-      >
-        {data?.lastMessage?.createdAt && (
-          <span className={chatsRoomsClasses.time}>
-            {moment(data?.lastMessage?.createdAt).format("hh:mm a")}
-          </span>
-        )}
-        {!!data?.unReadCount && (
-          <span className={chatsRoomsClasses.unseen}>{data?.unReadCount}</span>
-        )}
-      </div>
-    </div>
-  );
-}
 function ChatRooms({
   rooms,
   user,
@@ -296,69 +230,13 @@ function ChatRooms({
     </div>
   );
 }
-function ChatsHeader({
-  user,
-  onBack,
-}: {
-  user: UserInterface;
-  onBack: (e: null) => void;
-}): JSX.Element {
-  const status = user?.isOnline
-    ? "Online"
-    : user?.lastActive
-    ? moment(user?.lastActive).format("LLL")
-    : "Offline";
-  return (
-    <div className={chatsHeaderClasses.chatsHeader}>
-      <FiArrowLeft
-        className={chatsHeaderClasses.arrowBack}
-        onClick={() => typeof onBack == "function" && onBack(null)}
-      />
-      <div className={chatsHeaderClasses.left}>
-        <div className={chatsHeaderClasses.avatar}>
-          <img
-            src={user?.photo}
-            onError={(e: SyntheticEvent<HTMLImageElement, Event>) => {
-              e.currentTarget.onerror = null;
-              e.currentTarget.src = EmptyImg;
-            }}
-          />
-        </div>
-        <div className={chatsHeaderClasses.nameAndStatus}>
-          <h6>{`${user?.fullName}`}</h6>
-          <span>{status}</span>
-        </div>
-      </div>
-    </div>
-  );
-}
+
 const urlify = (text: string) => {
   const urlRegex = /(https?:\/\/[^\s]+)/gi;
   return text.replace(urlRegex, (url) => {
     return "<a href=" + url + " target=_blank>" + url + "</a>";
   });
 };
-
-function WelcomeToChat({
-  icon = welcomeToChat,
-  text = "Welcome to Chat",
-  style,
-  type,
-  className = "",
-}: {
-  icon?: string;
-  text?: string;
-  style?: object;
-  type?: string;
-  className?: string;
-}) {
-  return (
-    <div className={[noDataCss.container, className].join(" ")} style={style}>
-      <ReactSvg src={icon} />
-      <h4 font-size={type == "nodata" && "small"}>{text}</h4>
-    </div>
-  );
-}
 
 export function Loader({
   title = "Loading...",
@@ -372,16 +250,6 @@ export function Loader({
   return (
     <div className={`${loaderCss.loaderContainer} ${className}`} style={style}>
       <p>{title}</p>
-    </div>
-  );
-}
-
-function RenderTime({ time }: TimeInterface): JSX.Element {
-  return (
-    <div className={containerClasses.time}>
-      <div />
-      <p>{moment(time).format("DD MMM YYYY")}</p>
-      <div />
     </div>
   );
 }
@@ -453,29 +321,12 @@ function RightMessage({
   id: string;
   dataKey: string;
 }): JSX.Element {
-  const [checkSeen, setCheckSeen] = React.useState<boolean>(false);
-
   return (
     <>
-      <div
-        className={`${containerClasses.messageBox2} `}
-        onDoubleClick={() => setCheckSeen(!checkSeen)}
-        id={id}
-        key={dataKey}
-      >
+      <div className={`${containerClasses.messageBox2} `} id={id} key={dataKey}>
         <div className={containerClasses.text}>
           <p>{Parser(urlify(data?.text))}</p>
           <span>{moment(data?.createdAt).format("hh:mm a")}</span>
-
-          <p
-            className={containerClasses.seenText}
-            style={{
-              height: !checkSeen ? 0 : "max-content",
-              visibility: !checkSeen ? "hidden" : "visible",
-            }}
-          >
-            {data?.isSeen ? "Seen" : "Not-Seen"}
-          </p>
         </div>
         <div className={containerClasses.avatar}>
           <img
@@ -972,6 +823,7 @@ const Chat = React.forwardRef<
             chats={chats}
             onSend={onSend}
             user={user}
+            key={JSON.stringify(selectedChatRoom)}
             placeholder={placeholder}
             isTyping={isTyping}
             roomData={selectedChatRoom}
